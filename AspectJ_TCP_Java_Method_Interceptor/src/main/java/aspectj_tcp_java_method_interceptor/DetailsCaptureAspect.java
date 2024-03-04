@@ -22,8 +22,6 @@ package aspectj_tcp_java_method_interceptor;
 *
  * @author Freya Ebba Christ
  */
-
-
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -34,6 +32,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import javax.net.SocketFactory;
 import javax.net.ssl.SSLSocketFactory;
@@ -42,7 +42,6 @@ import javax.net.ssl.SSLSocketFactory;
 @Component
 public class DetailsCaptureAspect {
 
-    // Method to log data over a socket (SSL or regular)
     private void sendDataOverSocket(String data, String serverAddress, int serverPort, boolean useSSL) {
         try {
             SocketFactory factory = useSSL ? SSLSocketFactory.getDefault() : SocketFactory.getDefault();
@@ -51,12 +50,11 @@ public class DetailsCaptureAspect {
                 writer.write(data);
                 writer.flush();
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.err.println("Failed to send data over " + (useSSL ? "encrypted" : "regular") + " socket: " + e.getMessage());
         }
     }
 
-    // Method to log data to a file
     private void logDataToFile(String data) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("methodDetails.log", true))) {
             writer.write(data);
@@ -74,8 +72,11 @@ public class DetailsCaptureAspect {
         Object[] args = joinPoint.getArgs();
         Object returnValue = joinPoint.proceed(); // Proceed with the method call
 
-        String data = String.format("Class Name: %s, Method Name: %s, Parameters: %s, Return Value: %s",
-                                    className, methodName, Arrays.toString(args), returnValue);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSSSSS");
+        String currentDateTime = LocalDateTime.now().format(formatter);
+
+        String data = String.format("[%s] Class Name: %s, Method Name: %s, Parameters: %s, Return Value: %s",
+                                    currentDateTime, className, methodName, Arrays.toString(args), returnValue);
 
         if ("socket".equals(captureDetails.outputType())) {
             sendDataOverSocket(data, captureDetails.serverAddress(), captureDetails.serverPort(), captureDetails.useSSL());
@@ -86,6 +87,7 @@ public class DetailsCaptureAspect {
         return returnValue;
     }
 }
+
 
 
 
