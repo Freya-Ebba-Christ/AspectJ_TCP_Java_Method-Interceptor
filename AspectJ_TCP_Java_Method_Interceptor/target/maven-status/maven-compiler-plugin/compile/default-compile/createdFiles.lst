@@ -1,0 +1,5 @@
+com/mycompany/aspectj_tcp_java_method_interceptor/CaptureDetails.class
+com/mycompany/aspectj_tcp_java_method_interceptor/SimpleTCPServer.class
+Application.class
+com/mycompany/aspectj_tcp_java_method_interceptor/example/SampleService.class
+com/mycompany/aspectj_tcp_java_method_interceptor/DetailsCaptureAspect.class
