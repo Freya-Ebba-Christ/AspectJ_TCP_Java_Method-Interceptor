@@ -8,6 +8,7 @@ Using an annotation eliminates the need to change the source code.
 Happy coding!
 <br>
 <br>
+<b>For using SSL sockets:</b>
 Generate a Keystore:
 <br>
 <b>keytool -genkeypair -alias server -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 365</b>
