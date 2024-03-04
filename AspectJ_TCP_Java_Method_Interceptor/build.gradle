@@ -1,0 +1,19 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // AspectJ
+    implementation 'org.aspectj:aspectjrt:1.9.6'
+    implementation 'org.aspectj:aspectjweaver:1.9.6'
+    
+    // Spring AOP (Optional, if you're using Spring)
+    implementation 'org.springframework:spring-aop:5.3.8'
+    implementation 'org.springframework:spring-context:5.3.8'
+}
+
+// Optional: AspectJ compilation tasks for Gradle
+// This requires additional setup, such as creating a custom Gradle task
+// or using a plugin like 'io.freefair.aspectj.post-compile-weaving' for AspectJ weaving
