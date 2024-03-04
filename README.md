@@ -8,7 +8,7 @@ Using an annotation eliminates the need to change the source code.
 Happy coding!
 <br>
 <br>
-<b>For using SSL sockets:</b>
+<h1>For using SSL sockets:</h1>
 <br>
 Generate a Keystore:
 <br>
