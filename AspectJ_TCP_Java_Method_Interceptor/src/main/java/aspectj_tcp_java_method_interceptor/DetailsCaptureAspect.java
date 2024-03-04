@@ -31,22 +31,28 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.Arrays;
+import javax.net.SocketFactory;
+import javax.net.ssl.SSLSocketFactory;
 
 @Aspect
 @Component
 public class DetailsCaptureAspect {
 
-    // Method to log data to a socket
-    private void sendDataOverSocket(String data, String serverAddress, int serverPort) {
-        try (Socket socket = new Socket(serverAddress, serverPort);
-             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
-            writer.write(data);
-            writer.flush();
-        } catch (Exception e) {
-            System.err.println("Failed to send data over socket: " + e.getMessage());
+    // Method to log data over a socket (SSL or regular)
+    private void sendDataOverSocket(String data, String serverAddress, int serverPort, boolean useSSL) {
+        try {
+            SocketFactory factory = useSSL ? SSLSocketFactory.getDefault() : SocketFactory.getDefault();
+            try (Socket socket = factory.createSocket(serverAddress, serverPort);
+                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
+                writer.write(data);
+                writer.flush();
+            }
+        } catch (IOException e) {
+            System.err.println("Failed to send data over " + (useSSL ? "encrypted" : "regular") + " socket: " + e.getMessage());
         }
     }
 
@@ -71,16 +77,16 @@ public class DetailsCaptureAspect {
         String data = String.format("Class Name: %s, Method Name: %s, Parameters: %s, Return Value: %s",
                                     className, methodName, Arrays.toString(args), returnValue);
 
-        // Determine where to log the data based on the annotation's outputType parameter
         if ("socket".equals(captureDetails.outputType())) {
-            sendDataOverSocket(data, captureDetails.serverAddress(), captureDetails.serverPort());
+            sendDataOverSocket(data, captureDetails.serverAddress(), captureDetails.serverPort(), captureDetails.useSSL());
         } else if ("file".equals(captureDetails.outputType())) {
             logDataToFile(data);
         }
 
-        return returnValue; // Return the method's original return value
+        return returnValue;
     }
 }
+
 
 
 

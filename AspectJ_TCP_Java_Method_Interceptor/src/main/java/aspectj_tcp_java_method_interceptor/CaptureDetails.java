@@ -24,10 +24,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface CaptureDetails {
     String serverAddress() default "127.0.0.1";
     int serverPort() default 12345;
     String outputType() default "socket"; // "socket" or "file"
+    boolean useSSL() default true; // True for SSL socket, false for regular socket
 }
