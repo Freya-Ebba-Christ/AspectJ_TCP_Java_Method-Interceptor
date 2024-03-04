@@ -10,15 +10,13 @@ Happy coding!
 <br>
 Generate a Keystore:
 <br>
-<br>
 <b>keytool -genkeypair -alias server -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 365</b>
 <br>
 <br>
 Configure SSL/TLS:
 <br>
+<b>System.setProperty("javax.net.ssl.keyStore", "path/to/keystore.p12");</b>
 <br>
-System.setProperty("javax.net.ssl.keyStore", "path/to/keystore.p12");
-<br>
-System.setProperty("javax.net.ssl.keyStorePassword", "keystorepassword");
+<b>System.setProperty("javax.net.ssl.keyStorePassword", "keystorepassword");</b>
 
 
