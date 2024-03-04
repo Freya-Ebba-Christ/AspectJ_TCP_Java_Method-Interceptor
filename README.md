@@ -13,7 +13,9 @@ Generate a Keystore: keytool -genkeypair -alias server -keyalg RSA -keysize 2048
 <br>
 Configure SSL/TLS:
 <br>
+<br>
 System.setProperty("javax.net.ssl.keyStore", "path/to/keystore.p12");
+<br>
 System.setProperty("javax.net.ssl.keyStorePassword", "keystorepassword");
 
 
