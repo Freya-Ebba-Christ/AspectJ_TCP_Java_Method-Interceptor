@@ -6,5 +6,14 @@ This runtime annotation aims to aid in gathering runtime information that is oth
 Using an annotation eliminates the need to change the source code.
 <br>
 Happy coding!
+<br>
+<br>
+Generate a Keystore: keytool -genkeypair -alias server -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 365
+<br>
+<br>
+Configure SSL/TLS:
+<br>
+System.setProperty("javax.net.ssl.keyStore", "path/to/keystore.p12");
+System.setProperty("javax.net.ssl.keyStorePassword", "keystorepassword");
 
 
