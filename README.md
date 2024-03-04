@@ -9,6 +9,7 @@ Happy coding!
 <br>
 <br>
 <b>For using SSL sockets:</b>
+<br>
 Generate a Keystore:
 <br>
 <b>keytool -genkeypair -alias server -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 365</b>
