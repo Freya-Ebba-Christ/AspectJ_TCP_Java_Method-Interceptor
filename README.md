@@ -11,7 +11,7 @@ Happy coding!
 Generate a Keystore:
 <br>
 <br>
-keytool -genkeypair -alias server -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 365
+<b>keytool -genkeypair -alias server -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 365</b>
 <br>
 <br>
 Configure SSL/TLS:
