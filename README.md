@@ -9,15 +9,15 @@ Happy coding!
 <br>
 <br>
 <h1>For using SSL sockets:</h1>
-Generate a Keystore:
+<b>Generate a Keystore:</b>
 <br>
-<b>keytool -genkeypair -alias server -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 365</b>
+keytool -genkeypair -alias server -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 365
 <br>
 <br>
 Configure SSL/TLS:
 <br>
-<b>System.setProperty("javax.net.ssl.keyStore", "path/to/keystore.p12");</b>
+<b>System.setProperty("javax.net.ssl.keyStore", "path/to/keystore.p12");
 <br>
-<b>System.setProperty("javax.net.ssl.keyStorePassword", "keystorepassword");</b>
+System.setProperty("javax.net.ssl.keyStorePassword", "keystorepassword");
 
 
