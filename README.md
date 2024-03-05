@@ -8,7 +8,7 @@ Using an annotation eliminates the need to change the source code.
 Happy coding!
 <br>
 <br>
-<b>Note that this is still very much a work in progress. E.g. hings like a script for integrating this tool into the gradle build process are still to come</b>
+<b>Note that this is still very much a work in progress. E.g. things like a script for integrating this tool into the gradle build process are still to come</b>
 <br>
 <br>
 <h1>For using SSL sockets:</h1>
