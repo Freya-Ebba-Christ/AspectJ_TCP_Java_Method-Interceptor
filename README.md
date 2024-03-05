@@ -6,7 +6,8 @@ This runtime annotation aims to aid in gathering runtime information that is oth
 Using an annotation eliminates the need to change the source code.
 <br>
 Happy coding!
-<b>This is still very much a work in progress. More things like a script for integrating this tool into the gradle build process are still to come</b>
+<br>
+<b>Note that this is still very much a work in progress. More things like a script for integrating this tool into the gradle build process are still to come</b>
 <br>
 <br>
 <h1>For using SSL sockets:</h1>
