@@ -22,6 +22,6 @@ System.setProperty("javax.net.ssl.keyStorePassword", "keystorepassword");
 <br>
 <br>
 <h1>Adding and removing Annotations to/from source files</h1>
-<b>java -cp "your-classpath-here" AnnotationAdder MyJavaFile.java MyAnnotation "param1='value1', param2='value2'"</b>
+<b>Adding:  java -cp "your-classpath-here" AnnotationAdder MyJavaFile.java MyAnnotation "param1='value1', param2='value2'"</b>
 <br>
-<b>java AnnotationRemover MyJavaFile.java com.example.MyAnnotation</b>
+<b>Removing:  java AnnotationRemover MyJavaFile.java com.example.MyAnnotation</b>
