@@ -19,5 +19,9 @@ keytool -genkeypair -alias server -keyalg RSA -keysize 2048 -storetype PKCS12 -k
 System.setProperty("javax.net.ssl.keyStore", "path/to/keystore.p12");
 <br>
 System.setProperty("javax.net.ssl.keyStorePassword", "keystorepassword");
-
-
+<br>
+<br>
+<h1>Adding and removing Annotations to/from source files</h1>
+<b>java -cp "your-classpath-here" AnnotationAdder MyJavaFile.java MyAnnotation "param1='value1', param2='value2'"</b>
+<br>
+<b>java AnnotationRemover MyJavaFile.java com.example.MyAnnotation</b>
